@@ -30,9 +30,9 @@ describe('Teste da funcionalidade produto', () => {
             url : 'http://localhost:3000/produtos',
             body: {
                     "nome": produto,
-                    "preco": 32430,
-                    "descricao": "televisao",
-                    "quantidade": 200
+                    "preco": 334,
+                    "descricao": "samsung",
+                    "quantidade": 332
             },
             headers: {authorization: token } 
         }).then((response) => {
@@ -47,6 +47,63 @@ describe('Teste da funcionalidade produto', () => {
         .then((response) => {
             expect(response.status).to.equal(400)
             expect(response.body.message).to.equal('Já existe produto com esse nome')
+        })
+    })
+
+    it("Deve editar um produto já cadastrado", () => {
+        cy.request('http://localhost:3000/produtos').then(response => {
+            let id = response.body.produtos[0]._id
+            cy.request({
+                method : 'PUT',
+                url : `http://localhost:3000/produtos/${id}`,
+                headers: {authorization : token},
+                body : {
+                    "nome" : "Produto editado 45642083",
+                    "preco" : 203,
+                    "descricao" : "Produto editado",
+                    "quantidade" : 332
+                }
+            }).then(response => {
+                expect(response.body.message).to.equal('Registro alterado com sucesso')
+            })
+        })
+    })
+
+    it("Deve editar um produto cadastrado previamente", () => {
+        let produto = `Produto EBAC ${Math.floor(Math.random() * 200)}`
+        cy.cadastrarProduto(token, produto, 250, "Descrição do produto novo", 180)
+        .then(response => {
+            let id = response.body._id
+            
+            cy.request({
+                method: 'PUT',
+                url : `http://localhost:3000/produtos/${id}`,
+                headers : {authorization : token},
+                body : {
+                    "nome" : produto,
+                    "preco" : 2210,
+                    "descricao" : "Produto editado",
+                    "quantidade" : 322
+                }
+            }).then(response => {
+                expect(response.body.message).to.equal('Registro alterado com sucesso')
+            })
+        })
+    })
+
+    it('Deve deletar um produto previamente cadastrado', () => {
+        let produto = `Produto EBAC ${Math.floor(Math.random() * 100)}`
+        cy.cadastrarProduto(token, produto, 250, "Descrição do produto novo", 180)
+        .then(response => {
+            let id = response.body._id
+            cy.request({
+                method : 'DELETE',
+                url : `http://localhost:3000/produtos/${id}`,
+                headers : {authorization : token}
+            }).then(response => { 
+                expect(response.body.message).to.equal("Registro excluído com sucesso" || "Nenhum registro excluído")
+                expect(response.status).to.equal(200)
+            })
         })
     })
     

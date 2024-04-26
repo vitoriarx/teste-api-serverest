@@ -1,14 +1,21 @@
 /// <reference types='cypress' />
-import {token} from '../support/commands'
-import {cadastrarProduto} from '../support/commands'
+import token from '../support/commands'
+import cadastrarProduto from '../support/commands'
+import contrato from '../contracts/produtos.contract'
 
 
 describe('Teste da funcionalidade produto', () => {
     let token 
 
     before(() => {
-        
         cy.token('fulano@qa.com', 'teste').then(tkn => {token = tkn})
+    });
+
+    it('Deve validar contrato de produtos', () => {
+        cy.request({url: 'http://localhost:3000/produtos'
+        }).then(response => {
+            return contrato.validateAsync(response.body)
+        })
     });
 
     it('Listar produtos', () => {
@@ -20,19 +27,23 @@ describe('Teste da funcionalidade produto', () => {
             expect(response.status).to.equal(200)
             expect(response.body).to.have.property('produtos')
             expect(response.duration).to.be.lessThan(20) //define a velocidade em milisegundos que o teste tem que rodar
+            
+
         })
     });
 
     it('Cadastrar produto', () => {
-        let produto = `Produto EBAC ${Math.floor(Math.random() * 100)}` //Para gerar numero aleatorio no final para o produto ser dinamico
+        let produto = `Produto EBAC ${Math.floor(Math.random() * 1000)}` //Para gerar numero aleatorio no final para o produto ser dinamico
+        
+
         cy.request({
             method: 'POST',
             url : 'http://localhost:3000/produtos',
             body: {
                     "nome": produto,
-                    "preco": 334,
-                    "descricao": "samsung",
-                    "quantidade": 332
+                    "preco": 2224,
+                    "descricao": "televisao samsung de 0 polegadas", 
+                    "quantidade": 30
             },
             headers: {authorization: token } 
         }).then((response) => {
@@ -58,22 +69,25 @@ describe('Teste da funcionalidade produto', () => {
                 url : `http://localhost:3000/produtos/${id}`,
                 headers: {authorization : token},
                 body : {
-                    "nome" : "Produto editado 45642083",
+                    "nome" : "Televisao Philco de 44 polegadas",
                     "preco" : 203,
                     "descricao" : "Produto editado",
                     "quantidade" : 332
                 }
             }).then(response => {
+                expect(response.status).to.equal(200);
                 expect(response.body.message).to.equal('Registro alterado com sucesso')
             })
         })
     })
 
     it("Deve editar um produto cadastrado previamente", () => {
-        let produto = `Produto EBAC ${Math.floor(Math.random() * 200)}`
+        let produto = `Produto EBAC ${Math.floor(Math.random() * 2000)}`
+
+
         cy.cadastrarProduto(token, produto, 250, "Descrição do produto novo", 180)
         .then(response => {
-            let id = response.body._id
+            const id = response.body._id
             
             cy.request({
                 method: 'PUT',
@@ -82,7 +96,7 @@ describe('Teste da funcionalidade produto', () => {
                 body : {
                     "nome" : produto,
                     "preco" : 2210,
-                    "descricao" : "Produto editado",
+                    "descricao" : "Video game ultima geração",
                     "quantidade" : 322
                 }
             }).then(response => {
@@ -101,7 +115,7 @@ describe('Teste da funcionalidade produto', () => {
                 url : `http://localhost:3000/produtos/${id}`,
                 headers : {authorization : token}
             }).then(response => { 
-                expect(response.body.message).to.equal("Registro excluído com sucesso" || "Nenhum registro excluído")
+                expect(response.body.message).to.match(/Registro excluído com sucesso|Nenhum registro excluído/);
                 expect(response.status).to.equal(200)
             })
         })

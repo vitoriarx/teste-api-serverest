@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.603" tests="7" failures="0">
+  <testsuite name="Root Suite" timestamp="2024-04-26T00:05:34" tests="0" file="cypress\e2e\produtos.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Teste da funcionalidade produto" timestamp="2024-04-26T00:05:34" tests="7" time="0.593" failures="0">
+    <testcase name="Teste da funcionalidade produto Deve validar contrato de produtos" time="0.096" classname="Deve validar contrato de produtos">
+    </testcase>
+    <testcase name="Teste da funcionalidade produto Listar produtos" time="0.063" classname="Listar produtos">
+    </testcase>
+    <testcase name="Teste da funcionalidade produto Cadastrar produto" time="0.047" classname="Cadastrar produto">
+    </testcase>
+    <testcase name="Teste da funcionalidade produto Deve validar mensagem de erro ao cadastrar produto repetido" time="0.038" classname="Deve validar mensagem de erro ao cadastrar produto repetido">
+    </testcase>
+    <testcase name="Teste da funcionalidade produto Deve editar um produto já cadastrado" time="0.064" classname="Deve editar um produto já cadastrado">
+    </testcase>
+    <testcase name="Teste da funcionalidade produto Deve editar um produto cadastrado previamente" time="0.052" classname="Deve editar um produto cadastrado previamente">
+    </testcase>
+    <testcase name="Teste da funcionalidade produto Deve deletar um produto previamente cadastrado" time="0.064" classname="Deve deletar um produto previamente cadastrado">
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="1.502" tests="7" failures="2">
+  <testsuite name="Root Suite" timestamp="2024-04-23T19:41:44" tests="0" file="cypress\e2e\produtos.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Teste da funcionalidade produto" timestamp="2024-04-23T19:41:44" tests="7" time="1.493" failures="2">
+    <testcase name="Teste da funcionalidade produto Deve validar contrato de produtos" time="0.073" classname="Deve validar contrato de produtos">
+    </testcase>
+    <testcase name="Teste da funcionalidade produto Listar produtos" time="0.000" classname="Listar produtos">
+      <failure message="expected { Object (nome, preco, ...) } to have keys &apos;nome&apos;, &apos;preco&apos;, &apos;descricao&apos;, and &apos;quantidade&apos;" type="AssertionError"><![CDATA[AssertionError: expected { Object (nome, preco, ...) } to have keys 'nome', 'preco', 'descricao', and 'quantidade'
+    at eval (webpack://teste-api-serverest/./cypress/e2e/produtos.cy.js:34:44)
+    at Context.eval (webpack://teste-api-serverest/./cypress/e2e/produtos.cy.js:33:21)
+
+      + expected - actual
+
+      -[ '_id', 'descricao', 'nome', 'preco', 'quantidade' ]
+      +[ 'descricao', 'nome', 'preco', 'quantidade' ]
+      ]]></failure>
+    </testcase>
+    <testcase name="Teste da funcionalidade produto Cadastrar produto" time="0.123" classname="Cadastrar produto">
+    </testcase>
+    <testcase name="Teste da funcionalidade produto Deve validar mensagem de erro ao cadastrar produto repetido" time="0.174" classname="Deve validar mensagem de erro ao cadastrar produto repetido">
+    </testcase>
+    <testcase name="Teste da funcionalidade produto Deve editar um produto já cadastrado" time="0.000" classname="Deve editar um produto já cadastrado">
+      <failure message="`cy.request()` failed on:
+
+http://localhost:3000/produtos/05uejapBcUIHFm5V
+
+The response we received from your web server was:
+
+  &gt; 400: Bad Request
+
+This was considered a failure because the status code was not `2xx` or `3xx`.
+
+If you do not want status codes to cause failures pass the option: `failOnStatusCode: false`
+
+-----------------------------------------------------------
+
+The request we sent was:
+
+Method: PUT
+URL: http://localhost:3000/produtos/05uejapBcUIHFm5V
+Headers: {
+  &quot;Connection&quot;: &quot;keep-alive&quot;,
+  &quot;authorization&quot;: &quot;Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNzEzOTAxMzA0LCJleHAiOjE3MTM5MDE5MDR9.AWRmKWNNi38hy6YmGoaZ9A_lxrQ43geybMDM2d-AKwc&quot;,
+  &quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/124.0.0.0 Safari/537.36&quot;,
+  &quot;accept&quot;: &quot;*/*&quot;,
+  &quot;accept-encoding&quot;: &quot;gzip, deflate&quot;,
+  &quot;content-type&quot;: &quot;application/json&quot;,
+  &quot;content-length&quot;: 94
+}
+Body: {&quot;nome&quot;:&quot;Produto editado 45642083&quot;,&quot;preco&quot;:203,&quot;descricao&quot;:&quot;Produto editado&quot;,&quot;quantidade&quot;:332}
+
+-----------------------------------------------------------
+
+The response we got was:
+
+Status: 400 - Bad Request
+Headers: {
+  &quot;access-control-allow-origin&quot;: &quot;*&quot;,
+  &quot;x-dns-prefetch-control&quot;: &quot;off&quot;,
+  &quot;x-frame-options&quot;: &quot;SAMEORIGIN&quot;,
+  &quot;strict-transport-security&quot;: &quot;max-age=15552000; includeSubDomains&quot;,
+  &quot;x-download-options&quot;: &quot;noopen&quot;,
+  &quot;x-content-type-options&quot;: &quot;nosniff&quot;,
+  &quot;x-xss-protection&quot;: &quot;1; mode=block&quot;,
+  &quot;x-moesif-transaction-id&quot;: &quot;225a7937-0e19-462d-9bda-fdd195dcd0cb&quot;,
+  &quot;content-type&quot;: &quot;application/json; charset=utf-8&quot;,
+  &quot;content-length&quot;: &quot;53&quot;,
+  &quot;date&quot;: &quot;Tue, 23 Apr 2024 19:41:45 GMT&quot;,
+  &quot;connection&quot;: &quot;keep-alive&quot;,
+  &quot;keep-alive&quot;: &quot;timeout=5&quot;
+}
+Body: {
+  &quot;message&quot;: &quot;Já existe produto com esse nome&quot;
+}
+
+
+https://on.cypress.io/request" type="CypressError"><![CDATA[CypressError: `cy.request()` failed on:
+
+http://localhost:3000/produtos/05uejapBcUIHFm5V
+
+The response we received from your web server was:
+
+  > 400: Bad Request
+
+This was considered a failure because the status code was not `2xx` or `3xx`.
+
+If you do not want status codes to cause failures pass the option: `failOnStatusCode: false`
+
+-----------------------------------------------------------
+
+The request we sent was:
+
+Method: PUT
+URL: http://localhost:3000/produtos/05uejapBcUIHFm5V
+Headers: {
+  "Connection": "keep-alive",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNzEzOTAxMzA0LCJleHAiOjE3MTM5MDE5MDR9.AWRmKWNNi38hy6YmGoaZ9A_lxrQ43geybMDM2d-AKwc",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/124.0.0.0 Safari/537.36",
+  "accept": "*/*",
+  "accept-encoding": "gzip, deflate",
+  "content-type": "application/json",
+  "content-length": 94
+}
+Body: {"nome":"Produto editado 45642083","preco":203,"descricao":"Produto editado","quantidade":332}
+
+-----------------------------------------------------------
+
+The response we got was:
+
+Status: 400 - Bad Request
+Headers: {
+  "access-control-allow-origin": "*",
+  "x-dns-prefetch-control": "off",
+  "x-frame-options": "SAMEORIGIN",
+  "strict-transport-security": "max-age=15552000; includeSubDomains",
+  "x-download-options": "noopen",
+  "x-content-type-options": "nosniff",
+  "x-xss-protection": "1; mode=block",
+  "x-moesif-transaction-id": "225a7937-0e19-462d-9bda-fdd195dcd0cb",
+  "content-type": "application/json; charset=utf-8",
+  "content-length": "53",
+  "date": "Tue, 23 Apr 2024 19:41:45 GMT",
+  "connection": "keep-alive",
+  "keep-alive": "timeout=5"
+}
+Body: {
+  "message": "Já existe produto com esse nome"
+}
+
+
+https://on.cypress.io/request
+    at <unknown> (http://localhost:52640/__cypress/runner/cypress_runner.js:133123:72)
+    at tryCatcher (http://localhost:52640/__cypress/runner/cypress_runner.js:1807:23)
+    at Promise._settlePromiseFromHandler (http://localhost:52640/__cypress/runner/cypress_runner.js:1519:31)
+    at Promise._settlePromise (http://localhost:52640/__cypress/runner/cypress_runner.js:1576:18)
+    at Promise._settlePromise0 (http://localhost:52640/__cypress/runner/cypress_runner.js:1621:10)
+    at Promise._settlePromises (http://localhost:52640/__cypress/runner/cypress_runner.js:1701:18)
+    at _drainQueueStep (http://localhost:52640/__cypress/runner/cypress_runner.js:2407:12)
+    at _drainQueue (http://localhost:52640/__cypress/runner/cypress_runner.js:2400:9)
+    at Async._drainQueues (http://localhost:52640/__cypress/runner/cypress_runner.js:2416:5)
+    at Async.drainQueues (http://localhost:52640/__cypress/runner/cypress_runner.js:2286:14)
+From Your Spec Code:
+    at Context.eval (webpack://teste-api-serverest/./cypress/e2e/produtos.cy.js:69:15)]]></failure>
+    </testcase>
+    <testcase name="Teste da funcionalidade produto Deve editar um produto cadastrado previamente" time="0.094" classname="Deve editar um produto cadastrado previamente">
+    </testcase>
+    <testcase name="Teste da funcionalidade produto Deve deletar um produto previamente cadastrado" time="0.062" classname="Deve deletar um produto previamente cadastrado">
+    </testcase>
+  </testsuite>
+</testsuites>

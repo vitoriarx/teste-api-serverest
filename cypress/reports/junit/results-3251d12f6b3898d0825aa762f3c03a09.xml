@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.156" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2024-04-23T19:23:12" tests="0" file="cypress\e2e\produtos.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Teste da funcionalidade produto" timestamp="2024-04-23T19:23:12" tests="1" time="0.133" failures="0">
+    <testcase name="Teste da funcionalidade produto Deve validar contrato de produtos" time="0.116" classname="Deve validar contrato de produtos">
+    </testcase>
+  </testsuite>
+</testsuites>
